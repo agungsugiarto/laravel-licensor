@@ -10,7 +10,7 @@ In this case create features "download" and "support", assign them to a plan, th
         Route::get('download','App\Http\Controllers\DownloadController@index');
     });
 
-Also, don't forget to add `Sribna\Licensor\Traits\HasKey` trait to `App\User` model.
+Also, don't forget to add `Fluent\Licensor\Traits\HasKey` trait to `App\User` model.
 This trait injects `hasKeyFeature()` method used by the `licensor.key.feature` middleware.
 
     if(auth()->check() && auth()->user()->hasKeyFeature('download')){

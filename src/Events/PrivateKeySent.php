@@ -1,15 +1,15 @@
 <?php
 
-namespace Sribna\Licensor\Events;
+namespace Fluent\Licensor\Events;
 
 use GuzzleHttp\TransferStats;
 use Psr\Http\Message\ResponseInterface;
-use Sribna\Licensor\Models\Key;
-use Sribna\Licensor\Models\Secret;
+use Fluent\Licensor\Models\Key;
+use Fluent\Licensor\Models\Secret;
 
 /**
  * Class PrivateKeySent
- * @package Sribna\Licensor\Events
+ * @package Fluent\Licensor\Events
  */
 class PrivateKeySent
 {

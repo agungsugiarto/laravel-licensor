@@ -1,14 +1,14 @@
 <?php
 
-namespace Sribna\Licensor;
+namespace Fluent\Licensor;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Sribna\Licensor\Http\Middleware\CheckKeyFeature;
+use Fluent\Licensor\Http\Middleware\CheckKeyFeature;
 
 /**
  * Class LicensorServiceProvider
- * @package Sribna\Licensor
+ * @package Fluent\Licensor
  */
 class LicensorServiceProvider extends ServiceProvider
 {

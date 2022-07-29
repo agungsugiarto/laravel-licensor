@@ -1,14 +1,14 @@
 <?php
 
-namespace Sribna\Licensor\Traits;
+namespace Fluent\Licensor\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Sribna\Licensor\Models\Key;
+use Fluent\Licensor\Models\Key;
 
 /**
  * Trait HasKey
- * @package Sribna\Licensor\Traits
+ * @package Fluent\Licensor\Traits
  *
  * @property Collection $keys
  */

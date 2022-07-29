@@ -7,11 +7,11 @@ Route::group(['middleware' => [
 
     Route::post(
         config('licensor.key_verification_path'),
-        'Sribna\Licensor\Http\Controllers\KeyRequestController@check')
+        'Fluent\Licensor\Http\Controllers\KeyRequestController@check')
         ->name('licensor.key.check');
 
     Route::post(
         config('licensor.key_activation_path'),
-        'Sribna\Licensor\Http\Controllers\KeyRequestController@activate')
+        'Fluent\Licensor\Http\Controllers\KeyRequestController@activate')
         ->name('licensor.key.activate');
 });

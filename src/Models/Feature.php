@@ -1,9 +1,9 @@
 <?php
 
-namespace Sribna\Licensor\Models;
+namespace Fluent\Licensor\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Sribna\Licensor\Traits\HasStatusAttribute;
+use Fluent\Licensor\Traits\HasStatusAttribute;
 
 /**
  * Class Feature
@@ -15,7 +15,6 @@ use Sribna\Licensor\Traits\HasStatusAttribute;
  */
 class Feature extends Model
 {
-
     use HasStatusAttribute;
 
     /**

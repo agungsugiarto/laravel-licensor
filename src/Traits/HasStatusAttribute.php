@@ -1,12 +1,12 @@
 <?php
 
-namespace Sribna\Licensor\Traits;
+namespace Fluent\Licensor\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait HasStatusAttribute
- * @package Sribna\Licensor\Traits
+ * @package Fluent\Licensor\Traits
  *
  * @property int $status
  * @method Builder ofStatus($status)

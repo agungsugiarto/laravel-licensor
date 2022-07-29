@@ -1,14 +1,14 @@
 <?php
 
-namespace Sribna\Licensor\Http\Middleware;
+namespace Fluent\Licensor\Http\Middleware;
 
-use App\User;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
 /**
  * Class CheckKeyFeature
- * @package Sribna\Licensor\Http\Middleware
+ * @package Fluent\Licensor\Http\Middleware
  */
 class CheckKeyFeature
 {

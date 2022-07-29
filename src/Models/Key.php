@@ -1,13 +1,13 @@
 <?php
 
-namespace Sribna\Licensor\Models;
+namespace Fluent\Licensor\Models;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Sribna\Licensor\Traits\HasStatusAttribute;
+use Fluent\Licensor\Traits\HasStatusAttribute;
 
 /**
  * Class Key

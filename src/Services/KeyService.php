@@ -1,28 +1,28 @@
 <?php
 
-namespace Sribna\Licensor\Services;
+namespace Fluent\Licensor\Services;
 
-use App\User;
+use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\TransferStats;
 use Illuminate\Support\Str;
 use RuntimeException;
-use Sribna\Licensor\Events\KeyActivated;
-use Sribna\Licensor\Events\KeyIssued;
-use Sribna\Licensor\Events\KeyNotActivated;
-use Sribna\Licensor\Events\KeyNotVerified;
-use Sribna\Licensor\Events\KeyVerified;
-use Sribna\Licensor\Events\PrivateKeySent;
-use Sribna\Licensor\Exceptions\KeyActivationException;
-use Sribna\Licensor\Exceptions\KeyValidationException;
-use Sribna\Licensor\Exceptions\KeyVerificationException;
-use Sribna\Licensor\Models\Key;
-use Sribna\Licensor\Models\Secret;
+use Fluent\Licensor\Events\KeyActivated;
+use Fluent\Licensor\Events\KeyIssued;
+use Fluent\Licensor\Events\KeyNotActivated;
+use Fluent\Licensor\Events\KeyNotVerified;
+use Fluent\Licensor\Events\KeyVerified;
+use Fluent\Licensor\Events\PrivateKeySent;
+use Fluent\Licensor\Exceptions\KeyActivationException;
+use Fluent\Licensor\Exceptions\KeyValidationException;
+use Fluent\Licensor\Exceptions\KeyVerificationException;
+use Fluent\Licensor\Models\Key;
+use Fluent\Licensor\Models\Secret;
 use Throwable;
 
 /**
  * Class KeyService
- * @package Sribna\Licensor\Services
+ * @package Fluent\Licensor\Services
  */
 class KeyService
 {

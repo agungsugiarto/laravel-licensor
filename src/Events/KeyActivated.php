@@ -1,12 +1,12 @@
 <?php
 
-namespace Sribna\Licensor\Events;
+namespace Fluent\Licensor\Events;
 
-use Sribna\Licensor\Models\Key;
+use Fluent\Licensor\Models\Key;
 
 /**
  * Class KeyActivated
- * @package Sribna\Licensor\Events
+ * @package Fluent\Licensor\Events
  */
 class KeyActivated
 {

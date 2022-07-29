@@ -1,10 +1,10 @@
 <?php
 
-namespace Sribna\Licensor\Exceptions;
+namespace Fluent\Licensor\Exceptions;
 
 /**
  * Class KeyActivationException
- * @package Sribna\Licensor\Exceptions
+ * @package Fluent\Licensor\Exceptions
  */
 class KeyActivationException extends KeyException
 {

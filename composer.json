@@ -1,35 +1,34 @@
 {
-    "name": "sribna/licensor",
+    "name": "agungsugiarto/laravel-licensor",
     "description": "Laravel licensing system",
     "license": "MIT",
-    "homepage": "https://github.com/sribna/licensor",
+    "homepage": "https://github.com/agungsugiarto/laravel-licensor",
     "keywords": [
         "Laravel",
         "Licensing system"
     ],
     "require": {
-        "illuminate/support": "~7"
+        "illuminate/support": "^7.0|^8.0|^9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.1",
-        "orchestra/testbench": "~4",
-        "sempro/phpunit-pretty-print": "^1.0"
+        "phpunit/phpunit": "^9.4",
+        "orchestra/testbench": "^5.0|^6.0|^7.0",
+        "guzzlehttp/guzzle": "^7.4"
     },
     "autoload": {
         "psr-4": {
-            "Sribna\\Licensor\\": "src/"
+            "Fluent\\Licensor\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sribna\\Licensor\\Tests\\": "tests"
+            "Fluent\\Licensor\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Sribna\\Licensor\\LicensorServiceProvider"
+                "Fluent\\Licensor\\LicensorServiceProvider"
             ]
         }
     }

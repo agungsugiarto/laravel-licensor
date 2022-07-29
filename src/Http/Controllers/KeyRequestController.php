@@ -1,20 +1,20 @@
 <?php
 
-namespace Sribna\Licensor\Http\Controllers;
+namespace Fluent\Licensor\Http\Controllers;
 
 use Closure;
 use Exception;
 use GuzzleHttp\TransferStats;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Sribna\Licensor\Models\Key;
-use Sribna\Licensor\Models\Secret;
-use Sribna\Licensor\Services\KeyService;
+use Fluent\Licensor\Models\Key;
+use Fluent\Licensor\Models\Secret;
+use Fluent\Licensor\Services\KeyService;
 use Throwable;
 
 /**
  * Class KeyRequestController
- * @package Sribna\Licensor\Http\Controllers
+ * @package Fluent\Licensor\Http\Controllers
  */
 class KeyRequestController
 {

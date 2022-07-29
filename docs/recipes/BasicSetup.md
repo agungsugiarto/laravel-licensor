@@ -2,9 +2,9 @@
 
 Create one plan, create and assign one feature, create one public key for user ID `1` and domain `test.com`
 
-    use Sribna\Licensor\Models\Plan;
-    use Sribna\Licensor\Models\Feature;
-    use Sribna\Licensor\Models\Key;
+    use Fluent\Licensor\Models\Plan;
+    use Fluent\Licensor\Models\Feature;
+    use Fluent\Licensor\Models\Key;
     use Illuminate\Support\Str;
     
     $plan = Plan::create(

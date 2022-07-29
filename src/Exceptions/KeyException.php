@@ -1,12 +1,12 @@
 <?php
 
-namespace Sribna\Licensor\Exceptions;
+namespace Fluent\Licensor\Exceptions;
 
 use RuntimeException;
 
 /**
  * Class KeyException
- * @package Sribna\Licensor\Exceptions
+ * @package Fluent\Licensor\Exceptions
  */
 class KeyException extends RuntimeException
 {

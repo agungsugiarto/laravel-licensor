@@ -1,6 +1,6 @@
 # Models
 
-Namespace: _Sribna\Licensor\Models_
+Namespace: _Fluent\Licensor\Models_
 
 ## Feature
 Stores plan features. Plan features are the benefits a customer can get when purchasing a plan
