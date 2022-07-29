@@ -9,12 +9,6 @@ return [
     'licensee_callback_path' => 'key/callback',
 
     /**
-     * Limitation of requests from a licensee.
-     * See \Illuminate\Routing\Middleware\ThrottleRequests::class
-     */
-    'request_throttle' => '3',
-
-    /**
      * Paths to activate and verify licensees' keys on this server
      */
     'key_verification_path' => 'key/check',
