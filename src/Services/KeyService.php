@@ -42,13 +42,15 @@ class KeyService
     }
 
     /**
-     * Generate a public key
-     * @param int $length
+     * Generate unique public key.
+     *
+     * i.e: D899-AE8E-815B-0EBC-3BA7
+     *
      * @return string
      */
-    public function generate(int $length = 32): string
+    public function generateKey()
     {
-        return Str::random($length);
+        return implode('-', str_split(substr(strtoupper(md5(time() . rand(1000, 9999))), 0, 20), 4));
     }
 
     /**
@@ -71,7 +73,7 @@ class KeyService
             'domain' => $domain,
             'plan_id' => $planId,
             'user_id' => $userId,
-            'id' => $key ?: $this->generate(),
+            'id' => $key ?: $this->generateKey(),
         ]);
 
         event(new KeyIssued($key));
