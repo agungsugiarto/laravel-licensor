@@ -17,7 +17,7 @@ class CreateFeaturePlanTable extends Migration
         Schema::create('feature_plan', function (Blueprint $table) {
 
             $table->id('id');
-            $table->string('feature_id');
+            $table->unsignedBigInteger('feature_id');
             $table->unsignedBigInteger('plan_id');
 
             $table->foreign('plan_id')
