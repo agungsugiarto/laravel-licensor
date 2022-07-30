@@ -1,5 +1,10 @@
 # Licensor
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/agungsugiarto/laravel-licensor.svg?style=flat-square)](https://packagist.org/packages/agungsugiarto/laravel-licensor)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/agungsugiarto/laravel-licensor/run-tests?label=tests)](https://github.com/agungsugiarto/laravel-licensor/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/agungsugiarto/laravel-licensor/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/agungsugiarto/laravel-licensor/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/agungsugiarto/laravel-licensor.svg?style=flat-square)](https://packagist.org/packages/agungsugiarto/laravel-licensor)
+
 This package enables license management system for your existing Laravel 7 app. If you sell your scripts (not necessarily based on Laravel) and would like to manage license keys remotely - this package can be useful to you.
 Works in pair with [sribna/licensee](http://github.com/sribna/licensee).
 
@@ -22,10 +27,10 @@ If no updates are received within a certain period, then his script stops workin
 
 ## Installation
 
-Download
+You can install the package via composer:
 
 ``` bash
-$ composer require sribna/licensor
+$ composer require agungsugiarto/laravel-licensor
 ```
 
 Run migration
@@ -38,6 +43,24 @@ $ php artisan migrate
 
 See the [documentation](docs)
 
-## Security
+## Changelog
 
-If you discover any security related issues, please email author email instead of using the issue tracker.
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Contributions are very welcome.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Sribna](https://github.com/sribna)
+- [Agung Sugiarto](https://github.com/agungsugiarto)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
