@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['api']], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['api']], function () {
     Route::post(
         config('licensor.key_verification_path'),
         'Fluent\Licensor\Http\Controllers\KeyRequestController@check'

@@ -4,7 +4,7 @@
 
 ### Key activation
 
-**Endpoint:** `/key/activate`
+**Endpoint:** `/api/key/activate`
 
 **Method:** `POST`
 
@@ -22,7 +22,7 @@
     
 ### Key verification
 
-**Endpoint:** `/key/check`
+**Endpoint:** `/api/key/check`
 
 **Method:** `POST`
 
@@ -38,7 +38,7 @@
     Code: 4xx OR 5xx
     Content: {"error" : "Some error message"}
 
-## Requests sent to licensees
+## Requests sent to licensees (client)
 
 ### Private key callback
 Note: Endpoint path can be adjusted by the licensee in the request header
