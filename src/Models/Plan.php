@@ -2,6 +2,8 @@
 
 namespace Fluent\Licensor\Models;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -30,18 +32,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Plan extends Model
 {
-    use HasFactory, HasStatusAttribute;
-
-    /**
-     * @var bool
-     */
-    public $timestamps = false;
+    use HasFactory, HasSlug, HasStatusAttribute;
 
     /**
      * @var array
      */
     protected $fillable = [
         'title',
+        'slug',
         'text',
         'lifetime',
         'status',
@@ -55,6 +53,16 @@ class Plan extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     /**
      * Load related key models

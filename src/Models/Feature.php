@@ -2,9 +2,11 @@
 
 namespace Fluent\Licensor\Models;
 
+use Spatie\Sluggable\HasSlug;
+use Illuminate\Database\Eloquent\Model;
 use Fluent\Licensor\Traits\HasStatusAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Class Feature
@@ -16,22 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Feature extends Model
 {
-    use HasFactory, HasStatusAttribute;
-
-    /**
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
-     * @var string
-     */
-    protected $keyType = 'string';
+    use HasFactory, HasSlug, HasStatusAttribute;
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +28,7 @@ class Feature extends Model
         'id',
         'status',
         'title',
+        'slug',
         'text',
     ];
 
@@ -51,4 +39,14 @@ class Feature extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 }

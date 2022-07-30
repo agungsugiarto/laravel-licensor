@@ -17,11 +17,13 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->string('text')->nullable();
             $table->unsignedInteger('lifetime');
             $table->unsignedInteger('price');
             $table->boolean('status')->default(false);
             $table->tinyInteger('weight')->default(0);
+            $table->timestamps();
         });
     }
 
