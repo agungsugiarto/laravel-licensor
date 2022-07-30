@@ -6,7 +6,6 @@ use Fluent\Licensor\Models\Key;
 
 /**
  * Class KeyNotActivated
- * @package Fluent\Licensor\Events
  */
 class KeyNotActivated
 {
@@ -23,5 +22,4 @@ class KeyNotActivated
     {
         $this->key = $key;
     }
-
 }

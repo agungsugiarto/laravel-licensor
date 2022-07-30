@@ -2,19 +2,17 @@
 
 namespace Fluent\Licensor\Traits;
 
+use Fluent\Licensor\Models\Key;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Fluent\Licensor\Models\Key;
 
 /**
  * Trait HasKey
- * @package Fluent\Licensor\Traits
  *
  * @property Collection $keys
  */
 trait HasKey
 {
-
     /**
      * Load user related keys
      * @return HasMany
@@ -51,5 +49,4 @@ trait HasKey
      * @return mixed
      */
     abstract public function getAuthIdentifier();
-
 }

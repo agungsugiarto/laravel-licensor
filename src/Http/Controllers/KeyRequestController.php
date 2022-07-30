@@ -4,21 +4,19 @@ namespace Fluent\Licensor\Http\Controllers;
 
 use Closure;
 use Exception;
-use GuzzleHttp\TransferStats;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Fluent\Licensor\Models\Key;
 use Fluent\Licensor\Models\Secret;
 use Fluent\Licensor\Services\KeyService;
+use GuzzleHttp\TransferStats;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Throwable;
 
 /**
  * Class KeyRequestController
- * @package Fluent\Licensor\Http\Controllers
  */
 class KeyRequestController
 {
-
     /**
      * @var KeyService
      */
@@ -43,6 +41,7 @@ class KeyRequestController
         return $this->process($request, function (Request $request) {
             $data = $this->key->validate($request->getContent());
             $this->key->verify(reset($data));
+
             return $data;
         });
     }
@@ -57,6 +56,7 @@ class KeyRequestController
         return $this->process($request, function (Request $request) {
             $data = $this->key->validate($request->getContent());
             $this->key->activate(reset($data));
+
             return $data;
         });
     }
@@ -74,24 +74,21 @@ class KeyRequestController
             /** @var Key $key */
             /** @var Secret $secret */
             [$key, $secret] = $function($request);
-
         } catch (Exception $exception) {
             return $this->error($exception, 400);
         }
 
         try {
-
             $path = $request->header('Licensee-Callback');
 
             /** @var TransferStats $transfer */
             $transfer = $this->key->callback($key, $secret, $path)[1];
-
         } catch (Exception $exception) {
             return $this->error($exception, 500);
         }
 
         return response()->json([
-            'success' => trim(parse_url($transfer->getEffectiveUri(), PHP_URL_PATH), '/')
+            'success' => trim(parse_url($transfer->getEffectiveUri(), PHP_URL_PATH), '/'),
         ]);
     }
 
@@ -106,7 +103,7 @@ class KeyRequestController
         logger()->error($exception->getMessage());
 
         return response()->json([
-            'error' => config('app.debug') ? $exception->getMessage() : 'An error occurred'
+            'error' => config('app.debug') ? $exception->getMessage() : 'An error occurred',
         ], $code);
     }
 }

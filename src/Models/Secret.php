@@ -2,14 +2,14 @@
 
 namespace Fluent\Licensor\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Fluent\Licensor\Traits\HasStatusAttribute;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Secret
  *
  * @property string $id
- * @property boolean $status
+ * @property bool $status
  */
 class Secret extends Model
 {
@@ -35,14 +35,14 @@ class Secret extends Model
      */
     protected $fillable = [
         'id',
-        'status'
+        'status',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
     ];
 
     /**

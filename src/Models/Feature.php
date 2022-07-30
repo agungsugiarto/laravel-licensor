@@ -2,14 +2,14 @@
 
 namespace Fluent\Licensor\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Fluent\Licensor\Traits\HasStatusAttribute;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Feature
  *
  * @property string $id
- * @property boolean $status
+ * @property bool $status
  * @property string $title
  * @property string $text
  */
@@ -40,7 +40,7 @@ class Feature extends Model
         'id',
         'status',
         'title',
-        'text'
+        'text',
     ];
 
     /**
@@ -50,5 +50,4 @@ class Feature extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
-
 }

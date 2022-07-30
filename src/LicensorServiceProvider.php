@@ -2,13 +2,12 @@
 
 namespace Fluent\Licensor;
 
+use Fluent\Licensor\Http\Middleware\CheckKeyFeature;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Fluent\Licensor\Http\Middleware\CheckKeyFeature;
 
 /**
  * Class LicensorServiceProvider
- * @package Fluent\Licensor
  */
 class LicensorServiceProvider extends ServiceProvider
 {
@@ -17,8 +16,8 @@ class LicensorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -30,7 +29,7 @@ class LicensorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/licensor.php', 'licensor');
+        $this->mergeConfigFrom(__DIR__.'/../config/licensor.php', 'licensor');
 
         /** @var Router $router */
         $router = $this->app['router'];
@@ -52,7 +51,7 @@ class LicensorServiceProvider extends ServiceProvider
     protected function bootForConsole()
     {
         $this->publishes([
-            __DIR__ . '/../config/licensor.php' => config_path('licensor.php'),
+            __DIR__.'/../config/licensor.php' => config_path('licensor.php'),
         ], 'licensor.config');
     }
 }

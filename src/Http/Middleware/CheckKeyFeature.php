@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 /**
  * Class CheckKeyFeature
- * @package Fluent\Licensor\Http\Middleware
  */
 class CheckKeyFeature
 {

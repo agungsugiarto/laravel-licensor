@@ -3,10 +3,6 @@
 namespace Fluent\Licensor\Services;
 
 use App\Models\User;
-use GuzzleHttp\Client;
-use GuzzleHttp\TransferStats;
-use Illuminate\Support\Str;
-use RuntimeException;
 use Fluent\Licensor\Events\KeyActivated;
 use Fluent\Licensor\Events\KeyIssued;
 use Fluent\Licensor\Events\KeyNotActivated;
@@ -18,15 +14,16 @@ use Fluent\Licensor\Exceptions\KeyValidationException;
 use Fluent\Licensor\Exceptions\KeyVerificationException;
 use Fluent\Licensor\Models\Key;
 use Fluent\Licensor\Models\Secret;
+use GuzzleHttp\Client;
+use GuzzleHttp\TransferStats;
+use RuntimeException;
 use Throwable;
 
 /**
  * Class KeyService
- * @package Fluent\Licensor\Services
  */
 class KeyService
 {
-
     /**
      * @var Client
      */
@@ -50,7 +47,7 @@ class KeyService
      */
     public function generateKey()
     {
-        return implode('-', str_split(substr(strtoupper(md5(time() . rand(1000, 9999))), 0, 20), 4));
+        return implode('-', str_split(substr(strtoupper(md5(time().rand(1000, 9999))), 0, 20), 4));
     }
 
     /**
@@ -77,6 +74,7 @@ class KeyService
         ]);
 
         event(new KeyIssued($key));
+
         return $key;
     }
 
@@ -103,11 +101,11 @@ class KeyService
         [$hash, $publicKey, $domain] = $this->parse($privateKey);
 
         /** @var Key $key */
-        if (!($key = Key::find($publicKey))) {
+        if (! ($key = Key::find($publicKey))) {
             throw new KeyValidationException('Key does not exist');
         }
 
-        if (!$key->isActive()) {
+        if (! $key->isActive()) {
             throw new KeyValidationException('Key is not active');
         }
 
@@ -115,7 +113,7 @@ class KeyService
             throw new KeyValidationException('Key domain mismatch');
         }
 
-        if (!($secret = $this->findSecret($key, $hash))) {
+        if (! ($secret = $this->findSecret($key, $hash))) {
             throw new KeyValidationException('No matching secret found');
         }
 
@@ -130,18 +128,17 @@ class KeyService
     public function activate(Key $key): bool
     {
         try {
-
-            if (!$key->canActivate()) {
+            if (! $key->canActivate()) {
                 throw new KeyActivationException('Key cannot be activated');
             }
 
-            if (!$key->activate()) {
+            if (! $key->activate()) {
                 throw new KeyActivationException('Failed to activate');
             }
 
             event(new KeyActivated($key));
-            return true;
 
+            return true;
         } catch (KeyActivationException $exception) {
             event(new KeyNotActivated($key));
             throw $exception;
@@ -156,18 +153,17 @@ class KeyService
     public function verify(Key $key)
     {
         try {
-
-            if (!$key->isValid()) {
+            if (! $key->isValid()) {
                 throw new KeyVerificationException('Key is not valid');
             }
 
-            if (!$key->user instanceof User) {
+            if (! $key->user instanceof User) {
                 throw new KeyVerificationException('Invalid key user');
             }
 
             event(new KeyVerified($key));
-            return true;
 
+            return true;
         } catch (KeyVerificationException $exception) {
             event(new KeyNotVerified($key));
             throw $exception;
@@ -191,10 +187,11 @@ class KeyService
             'body' => $privateKey,
             'on_stats' => function (TransferStats $stats) use (&$transfer) {
                 $transfer = $stats;
-            }
+            },
         ]);
 
         event(new PrivateKeySent($key, $secret, $privateKey, $response, $transfer));
+
         return [$response, $transfer];
     }
 
@@ -242,7 +239,7 @@ class KeyService
      */
     public function getCallbackUrl(string $domain, string $path = null)
     {
-        return "http://$domain/" . ($path ?: config('licensor.licensee_callback_path'));
+        return "http://$domain/".($path ?: config('licensor.licensee_callback_path'));
     }
 
     /**
@@ -252,7 +249,7 @@ class KeyService
      */
     public function parse($privateKey): array
     {
-        if (!$privateKey || !is_string($privateKey)) {
+        if (! $privateKey || ! is_string($privateKey)) {
             throw new KeyValidationException('Invalid private key value');
         }
 
@@ -286,7 +283,7 @@ class KeyService
      */
     public function hashToken(Key $key, Secret $secret)
     {
-        return md5($secret->id . $key->id);
+        return md5($secret->id.$key->id);
     }
 
     /**
@@ -304,7 +301,8 @@ class KeyService
         $settings['domain'] = $key->domain;
 
         $jsonSettings = json_encode($settings);
-        return base64_encode(md5($jsonSettings . $secret->id) . "|$jsonSettings");
+
+        return base64_encode(md5($jsonSettings.$secret->id)."|$jsonSettings");
     }
 
     /**
@@ -315,8 +313,7 @@ class KeyService
     {
         return [
             'shutdown_offset' => config('licensor.key_shutdown_time_offset'),
-            'expires_at' => time() + config('licensor.key_expiration_time_offset')
+            'expires_at' => time() + config('licensor.key_expiration_time_offset'),
         ];
     }
-
 }

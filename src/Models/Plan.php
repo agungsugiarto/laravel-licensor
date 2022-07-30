@@ -2,12 +2,12 @@
 
 namespace Fluent\Licensor\Models;
 
+use Fluent\Licensor\Traits\HasStatusAttribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Fluent\Licensor\Traits\HasStatusAttribute;
 
 /**
  * Class Plan
@@ -16,7 +16,7 @@ use Fluent\Licensor\Traits\HasStatusAttribute;
  * @property string $title
  * @property string $text
  * @property int $lifetime
- * @property boolean $status
+ * @property bool $status
  * @property int $price
  * @property int $weight
  *
@@ -45,14 +45,14 @@ class Plan extends Model
         'lifetime',
         'status',
         'price',
-        'weight'
+        'weight',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
     ];
 
     /**
@@ -101,7 +101,7 @@ class Plan extends Model
     public function scopeOfFeature(Builder $query, $featureId)
     {
         return $query->whereHas('features', function (Builder $query) use ($featureId) {
-            return $query->whereIn('features.id', (array)$featureId);
+            return $query->whereIn('features.id', (array) $featureId);
         });
     }
 
@@ -114,7 +114,7 @@ class Plan extends Model
     public function scopeOfActiveFeature(Builder $query, $featureId)
     {
         return $query->whereHas('features', function (Builder $query) use ($featureId) {
-            return $query->whereIn('features.id', (array)$featureId)->active();
+            return $query->whereIn('features.id', (array) $featureId)->active();
         });
     }
 
@@ -126,7 +126,7 @@ class Plan extends Model
     public function hasFeature($featureId): bool
     {
         return $this->features()
-            ->whereIn('features.id', (array)$featureId)
+            ->whereIn('features.id', (array) $featureId)
             ->exists();
     }
 
@@ -139,7 +139,7 @@ class Plan extends Model
     {
         return $this->features()
             ->active()
-            ->whereIn('features.id', (array)$featureId)
+            ->whereIn('features.id', (array) $featureId)
             ->exists();
     }
 

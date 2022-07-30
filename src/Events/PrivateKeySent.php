@@ -2,14 +2,13 @@
 
 namespace Fluent\Licensor\Events;
 
-use GuzzleHttp\TransferStats;
-use Psr\Http\Message\ResponseInterface;
 use Fluent\Licensor\Models\Key;
 use Fluent\Licensor\Models\Secret;
+use GuzzleHttp\TransferStats;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class PrivateKeySent
- * @package Fluent\Licensor\Events
  */
 class PrivateKeySent
 {
@@ -59,5 +58,4 @@ class PrivateKeySent
         $this->transfer = $transfer;
         $this->privateKey = $privateKey;
     }
-
 }

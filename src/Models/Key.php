@@ -3,11 +3,11 @@
 namespace Fluent\Licensor\Models;
 
 use App\Models\User;
+use Fluent\Licensor\Traits\HasStatusAttribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Fluent\Licensor\Traits\HasStatusAttribute;
 
 /**
  * Class Key
@@ -15,7 +15,7 @@ use Fluent\Licensor\Traits\HasStatusAttribute;
  * @property string $id
  * @property int $plan_id
  * @property int $user_id
- * @property boolean $status
+ * @property bool $status
  * @property string $domain
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -33,7 +33,6 @@ use Fluent\Licensor\Traits\HasStatusAttribute;
  */
 class Key extends Model
 {
-
     use HasStatusAttribute;
 
     /**
@@ -56,7 +55,7 @@ class Key extends Model
         'plan_id',
         'user_id',
         'domain',
-        'activated_at'
+        'activated_at',
     ];
 
     /**
@@ -65,7 +64,7 @@ class Key extends Model
      */
     protected $casts = [
         'status' => 'boolean',
-        'activated_at' => 'datetime'
+        'activated_at' => 'datetime',
     ];
 
     /**
@@ -193,7 +192,7 @@ class Key extends Model
             && $this->isActivated()
             && $this->plan instanceof Plan
             && $this->plan->isActive()
-            && !$this->isExpired();
+            && ! $this->isExpired();
     }
 
     /**
@@ -203,7 +202,7 @@ class Key extends Model
     public function canActivate()
     {
         return $this->isActive()
-            && !$this->isActivated()
+            && ! $this->isActivated()
             && $this->plan instanceof Plan
             && $this->plan->isActive()
             && $this->user instanceof User;
@@ -218,5 +217,4 @@ class Key extends Model
         return $this->plan->isExpirable()
             && $this->activated_at->lt(now()->subSeconds($this->plan->lifetime));
     }
-
 }

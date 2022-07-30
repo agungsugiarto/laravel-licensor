@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait HasStatusAttribute
- * @package Fluent\Licensor\Traits
  *
  * @property int $status
  * @method Builder ofStatus($status)
@@ -14,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 trait HasStatusAttribute
 {
-
     /**
      * Filter by status
      * @param Builder $query
@@ -42,7 +40,6 @@ trait HasStatusAttribute
      */
     public function isActive()
     {
-        return !empty($this->status);
+        return ! empty($this->status);
     }
-
 }
