@@ -3,11 +3,12 @@
 namespace Fluent\Licensor\Models;
 
 use App\Models\User;
-use Fluent\Licensor\Traits\HasStatusAttribute;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Fluent\Licensor\Traits\HasStatusAttribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Key
@@ -33,7 +34,7 @@ use Illuminate\Support\Carbon;
  */
 class Key extends Model
 {
-    use HasStatusAttribute;
+    use HasFactory, HasStatusAttribute;
 
     /**
      * @var bool

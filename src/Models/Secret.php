@@ -2,8 +2,9 @@
 
 namespace Fluent\Licensor\Models;
 
-use Fluent\Licensor\Traits\HasStatusAttribute;
 use Illuminate\Database\Eloquent\Model;
+use Fluent\Licensor\Traits\HasStatusAttribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Secret
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Secret extends Model
 {
-    use HasStatusAttribute;
+    use HasFactory, HasStatusAttribute;
 
     /**
      * @var bool
