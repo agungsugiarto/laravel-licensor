@@ -2,9 +2,9 @@
 
 namespace Fluent\Licensor\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Fluent\Licensor\Traits\HasStatusAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Secret
